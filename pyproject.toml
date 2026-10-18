@@ -1,0 +1,22 @@
+[project]
+name = "citemark"
+version = "0.1.0"
+description = "Question answering over your documents: hybrid search, reranking, citations, and a benchmark."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Ali Ashter" }]
+dependencies = ["sentence-transformers>=3", "numpy", "openai>=1.40", "pypdf", "fastapi", "uvicorn"]
+
+[project.optional-dependencies]
+dev = ["pytest", "datasets"]
+
+[project.scripts]
+citemark = "citemark.cli:main"
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["citemark"]

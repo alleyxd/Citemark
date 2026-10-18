@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.citemark/
+evals/index_wiki/
+evals/run.log
+*.egg-info/
