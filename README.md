@@ -1,5 +1,7 @@
 # Citemark
 
+[![tests](https://github.com/alleyxd/Citemark/actions/workflows/tests.yml/badge.svg)](https://github.com/alleyxd/Citemark/actions/workflows/tests.yml)
+
 Ask questions about your own documents and get short answers with citations. Retrieval combines keyword
 search (BM25) and embeddings, merges them with reciprocal rank fusion, and reranks with a cross-encoder.
 Everything runs locally, and the repository includes a benchmark so each part of the pipeline is measured.
