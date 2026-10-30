@@ -36,11 +36,14 @@ def split(text: str, max_words: int = 220, overlap: int = 40) -> list[tuple[str,
         para = para.strip()
         if not para:
             continue
-        m = re.match(r"^#{1,6}\s+(.*)", para)
-        if m and "\n" not in para:
+        m = re.match(r"#{1,6}\s+(.*)", para)
+        if m:
+            # a heading starts a new section, whether or not a blank line follows it
             flush()
             heading = m.group(1).strip()
-            continue
+            para = para[m.end():].strip()
+            if not para:
+                continue
         if sum(len(p.split()) for p in buf) + len(para.split()) > max_words:
             flush()
         buf.append(para)
