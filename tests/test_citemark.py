@@ -20,6 +20,13 @@ def test_split_keeps_headings_and_overlaps_long_text():
     assert shipping[0].split()[-50:] == shipping[1].split()[:50]   # overlap carried over
 
 
+def test_split_heading_directly_above_its_text():
+    text = "# Intro\n\nHello there.\n\n## Pricing\nPlans start at $10 a month.\n\n## Support\nEmail us any time."
+    assert split(text) == [("Intro", "Hello there."), ("Pricing", "Plans start at $10 a month."),
+                           ("Support", "Email us any time.")]
+    assert split("#hashtag is not a heading") == [("", "#hashtag is not a heading")]
+
+
 def test_bm25_ranks_matching_document_first():
     bm = BM25(["the cat sat on the mat", "dogs chase cars", "a cat and a dog"])
     s = bm.scores("cat mat")
